@@ -121,42 +121,24 @@
                 document.createTextNode(humanFileSize(input.value))
             );
         }
-
-        /**
-         * Format bytes as human-readable text.
-         * 
-         * @param bytes Number of bytes.
-         * @param si True to use metric (SI) units, aka powers of 1000. False to use 
-         *           binary (IEC), aka powers of 1024.
-         * @param dp Number of decimal places to display.
-         * 
-         * @return Formatted string.
-         */
-        function humanFileSize(bytes, si = false, dp = 1) {
-            const thresh = si ? 1000 : 1024;
-
-            if (Math.abs(bytes) < thresh) {
-                return bytes + ' B';
+        function humanFileSize(size) {
+            // adapted from https://stackoverflow.com/a/20459666
+            const units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+            let i = 0;
+            while (size >= 1024) {
+                size /= 1024;
+                i++
             }
-
-            const units = si
-                ? ['kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
-                : ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'];
-            let u = -1;
-            const r = 10 ** dp;
-
-            do {
-                bytes /= thresh;
-                ++u;
-            } while (Math.round(Math.abs(bytes) * r) / r >= thresh && u < units.length - 1);
-
-
-            return bytes.toFixed(dp) + ' ' + units[u];
+            return size.toFixed(1) + ' ' + units[i];
         }
     </script>
 
     <footer>
         <script src="https://inform.everyone.wtf/legal.min.js" data-site-id="d7ecbd18-c0e2-41a4-b57b-9479e3c04c37"></script>
+        <br />
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License.
+        </a>
     </footer>
 </body>
 
