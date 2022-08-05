@@ -11,11 +11,6 @@
         transform: translate(-50%, -50%);
     }
 
-    main.center h3 {
-        font-weight: 100;
-        font-family: monospace;
-    }
-
     main.center span {
         position: absolute;
         transition: opacity 2s;
@@ -39,10 +34,61 @@
         text-align: center;
     }
 
+    p.line {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    p.line span {
+        padding: 0 10px;
+    }
+
+    p.line:before,
+    p.line:after {
+        height: 2px;
+        flex: 1;
+        content: '';
+    }
+
+    h2.inline {
+        display: inline-block;
+        margin-left: 10px;
+    }
+
+    /* light, default */
+    body {
+        background: white;
+    }
+
+    p.line span {
+        background: white;
+    }
+
+    p.line:before,
+    p.line:after {
+        background: black;
+    }
+
+
+    /* dark */
     @media (prefers-color-scheme: dark) {
         body {
             background: black;
             color: white;
+        }
+
+        p.line span {
+            background: black;
+        }
+
+        p.line:before,
+        p.line:after {
+            background: white;
+        }
+
+        :root {
+            color-scheme: dark;
         }
     }
 </style>
@@ -50,8 +96,14 @@
 <body>
     <main class="center">
         <h1>Bytes To Human</h1>
+        <p>
+            This page allows you to convert a number of bytes to a human readable representation.
+        </p>
+        <br />
+        <br />
         <input type="number" min="0" id="human">
-        <p>corresponds to</p>
+        <h2 class="inline">Byte(s)</h2>
+        <p class="line"><span>correspond(s) to</span></p>
         <h2 id="out">0B</h2>
     </main>
     <script>
