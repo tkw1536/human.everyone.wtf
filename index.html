@@ -123,6 +123,7 @@
         }
         function humanFileSize(size) {
             // adapted from https://stackoverflow.com/a/20459666
+            if(typeof size !== 'number') size = parseInt(size, 10)
             const units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
             let i = 0;
             while (size >= 1024) {
@@ -137,8 +138,8 @@
         <script src="https://inform.everyone.wtf/legal.min.js" data-site-id="d7ecbd18-c0e2-41a4-b57b-9479e3c04c37"></script>
         <br />
         <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
-            This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License.
-        </a>
+            This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License
+        </a>.
     </footer>
 </body>
 
